@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>기본 인덱스 페이지</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        #result { font-size: 2em; margin: 20px 0; }
-        button { font-size: 1.2em; padding: 10px 20px; }
-    </style>
-</head>
 <body>
     <h1>환영합니다!</h1>
     <p>이것은 기본 인덱스 파일입니다.</p>
     <h2>정빈이가 이번주에 사귈 확률은?</h2>
     <div id="result">--%</div>
     <button onclick="setProbability()">확률 확인하기</button>
+    <div id="emoji" style="font-size: 4em; margin-top: 20px;">🙂</div>
     <script>
         function setProbability() {
-            const percent = Math.floor(Math.random() * 100) + 1;
-            document.getElementById('result').textContent = percent + '%';
+            const unluckyRate = 85; // 못 사귈 확률(퍼센트)
+            const rand = Math.random() * 100;
+            const emojiDiv = document.getElementById('emoji');
+            if (rand < unluckyRate) {
+                document.getElementById('result').textContent = '이번주는 못 사귑니다 😢 (확률: 85%)';
+                emojiDiv.textContent = '😢';
+            } else {
+                const percent = Math.floor(Math.random() * 100) + 1;
+                document.getElementById('result').textContent = '사귈 확률: ' + percent + '% 🎉';
+                emojiDiv.textContent = '🎉';
+            }
         }
-    </script>
